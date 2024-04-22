@@ -1,0 +1,335 @@
+15,4 Implanted Motif Tests
+
+Test 1
+Implanted Motif: CGATCAGAAGATATC
+Predicted Motif 1: GATCAGAAGATATCC
+Predicted Motif 2: GATCAGAAGATATCC
+Predicted Motif 3: GATCAGAAGATATCC
+
+Test 2
+Implanted Motif: GCTTTGATCCAAGCG
+Predicted Motif 1: GCTTTGATCCAAGCG	MATCH
+Predicted Motif 2: GCTTTGATCCAAGCG	MATCH
+Predicted Motif 3: GCTTTGATCCAAGCG	MATCH
+
+Test 3
+Implanted Motif: GATCCTAACCGATTG
+Predicted Motif 1: TCCTAACCGATTGGT
+Predicted Motif 2: TCCTAACCGATTGGT
+Predicted Motif 3: TCCTAACCGATTGGT
+
+Test 4
+Implanted Motif: GCCATGTGTGGCGTG
+Predicted Motif 1: GGCCATGTGTGGCGT
+
+Test 5
+Implanted Motif: GTAGGGCTCTGCGAC
+Predicted Motif 1: GTAGGGCTCTGCGAC	MATCH
+Predicted Motif 2: GTAGGGCTCTGCGAC	MATCH
+Predicted Motif 3: GTAGGGCTCTGCGAC	MATCH
+
+Test 6
+Implanted Motif: ACTGACGCAGCATGC
+Predicted Motif 1: ACTGACGCAGCATGC	MATCH
+Predicted Motif 2: ACTGACGCAGCATGC	MATCH
+Predicted Motif 3: ACTGACGCAGCATGC	MATCH
+
+Test 7
+Implanted Motif: CTTTAACTCCCCTCT
+Predicted Motif 1: CTTTAACTCCCCTCT	MATCH
+Predicted Motif 2: CTTTAACTCCCCTCT	MATCH
+Predicted Motif 3: CTTTAACTCCCCTCT	MATCH
+
+Test 8
+Implanted Motif: CGCAAGTGTTCAACT
+Predicted Motif 1: CGCAAGTGTTCAACT	MATCH
+Predicted Motif 2: CGCAAGTGTTCAACT	MATCH
+Predicted Motif 3: CGCAAGTGTTCAACT	MATCH
+
+Test 9
+Implanted Motif: ATTGCACGTCCAGCC
+Predicted Motif 1: ATTGCACGTCCAGCC	MATCH
+Predicted Motif 2: ATTGCACGTCCAGCC	MATCH
+Predicted Motif 3: ATTGCACGTCCAGCC	MATCH
+
+Test 10
+Implanted Motif: GGGTGAATTGCACCG
+Predicted Motif 1: GGGTGAATTGCACCG	MATCH
+Predicted Motif 2: GGGTGAATTGCACCG	MATCH
+Predicted Motif 3: GGGTGAATTGCACCG	MATCH
+
+Test 11
+Implanted Motif: GTACCAAGCTGTAGT
+Predicted Motif 1: CGTACCAAGCTGTAG
+Predicted Motif 2: CGTACCAAGCTGTAG
+Predicted Motif 3: TACCAAGCTGTAGTG
+
+Test 12
+Implanted Motif: CAAGGGCAGGCCATA
+Predicted Motif 1: AAGGGCAGGCCATAA
+Predicted Motif 2: ACAAGGGCAGGCCAT
+Predicted Motif 3: CCAAGGGCAGGCCAT
+
+Test 13
+Implanted Motif: TAGCAACCACGTACA
+Predicted Motif 1: AGCAACCACGTACAC
+Predicted Motif 2: AGCAACCACGTACAC
+Predicted Motif 3: AGCAACCACGTACAC
+
+Test 14
+Implanted Motif: AGGACTTAGTACGGT
+Predicted Motif 1: GGACTTAGTACGGTC
+Predicted Motif 2: GGACTTAGTACGGTC
+Predicted Motif 3: GGACTTAGTACGGTC
+
+Test 15
+Implanted Motif: GGCGTCTGCATTTCC
+Predicted Motif 1: no motifs found :(
+
+Test 16
+Implanted Motif: AGGCCCAGGATATAG
+Predicted Motif 1: AGGCCCAGGATATAG	MATCH
+Predicted Motif 2: AGGCCCAGGATATAG	MATCH
+Predicted Motif 3: AGGCCCAGGATATAG	MATCH
+
+Test 17
+Implanted Motif: AGAGCATATATGGGG
+Predicted Motif 1: AGAGCATATATGGGG	MATCH
+Predicted Motif 2: AGAGCATATATGGGG	MATCH
+Predicted Motif 3: AGAGCATATATGGGG	MATCH
+
+Test 18
+Implanted Motif: AAGGCGGCTGTCTCG
+Predicted Motif 1: AAGGCGGCTGTCTCG	MATCH
+Predicted Motif 2: AAGGCGGCTGTCTCG	MATCH
+Predicted Motif 3: AAGGCGGCTGTCTCG	MATCH
+
+Test 19
+Implanted Motif: CACCAGCCACCCAGA
+Predicted Motif 1: AGCCACCCAGATCCG
+Predicted Motif 2: AGCCACCCAGATACG
+
+Test 20
+Implanted Motif: TTCCTTGTAAAGGTA
+Predicted Motif 1: TTTCCTTGTAAAGGT
+Predicted Motif 2: TTTCCTTGTAAAGGT
+
+Test 21
+Implanted Motif: TGTGCTCCTATAAGG
+Predicted Motif 1: no motifs found :(
+
+Test 22
+Implanted Motif: TCAATTCGCCTACCG
+Predicted Motif 1: AATTCGCCTACCGCT
+Predicted Motif 2: AATTCGCCTACCGCT
+Predicted Motif 3: AATTCGCCTACCGCA
+
+Test 23
+Implanted Motif: GGTGCACGATCAGTA
+Predicted Motif 1: GGTGCACGATCAGTA	MATCH
+Predicted Motif 2: GGTGCACGATCAGTA	MATCH
+Predicted Motif 3: GGTGCACGATCAGTA	MATCH
+
+Test 24
+Implanted Motif: CCGGGCGCCCCTGCC
+Predicted Motif 1: CCGGGCGCCCCTGCC	MATCH
+Predicted Motif 2: CCGGGCGCCCCTGCC	MATCH
+Predicted Motif 3: CCGGGCGCCCCTGCC	MATCH
+
+Test 25
+Implanted Motif: CCAACGAATGCAACT
+Predicted Motif 1: CCAACGAATGCAACT	MATCH
+Predicted Motif 2: CCAACGAATGCAACT	MATCH
+Predicted Motif 3: CCAACGAATGCAACT	MATCH
+
+Test 26
+Implanted Motif: ACTCCCAGTGATTTA
+Predicted Motif 1: ACTCCCAGTGATTTA	MATCH
+Predicted Motif 2: ACTCCCAGTGATTTA	MATCH
+Predicted Motif 3: ACTCCCAGTGATTTA	MATCH
+
+Test 27
+Implanted Motif: CGCGTGCTTAGTACC
+Predicted Motif 1: no motifs found :(
+
+Test 28
+Implanted Motif: CTGCATCCTTAGATG
+Predicted Motif 1: no motifs found :(
+
+Test 29
+Implanted Motif: CTAACTAAGAGGTTT
+Predicted Motif 1: no motifs found :(
+
+Test 30
+Implanted Motif: TATCGTAGCATTCTA
+Predicted Motif 1: no motifs found :(
+
+Test 31
+Implanted Motif: TCGACTCTCCTGATC
+Predicted Motif 1: TCGACTCTCCTGATC	MATCH
+Predicted Motif 2: TCGACTCTCCTGATC	MATCH
+Predicted Motif 3: TCGACTCTCCTGATC	MATCH
+
+Test 32
+Implanted Motif: TTGAGAAATCTGGAA
+Predicted Motif 1: ATTGAGAAATCTGGA
+Predicted Motif 2: ATTGAGAAATCTGGA
+Predicted Motif 3: ATTGAGAAATCTGGA
+
+Test 33
+Implanted Motif: TAGACTTACTAGGAA
+Predicted Motif 1: TAGACTTACTAGGAA	MATCH
+Predicted Motif 2: TAGACTTACTAGGAA	MATCH
+Predicted Motif 3: TAGACTTACTAGGAA	MATCH
+
+Test 34
+Implanted Motif: CAAGCTCGGGGGTCC
+Predicted Motif 1: CAAGCTCGGGGGTCC	MATCH
+Predicted Motif 2: CAAGCTCGGGGGTCC	MATCH
+Predicted Motif 3: CAAGCTCGGGGGTCC	MATCH
+
+Test 35
+Implanted Motif: CCAAACATATACGTA
+Predicted Motif 1: CCAAACATATACGTA	MATCH
+Predicted Motif 2: CCAAACATATACGTA	MATCH
+Predicted Motif 3: CCAAACATATACGTA	MATCH
+
+Test 36
+Implanted Motif: ACTGACCCTTTGAAT
+Predicted Motif 1: ACTGACCCTTTGAAT	MATCH
+Predicted Motif 2: ACTGACCCTTTGAAT	MATCH
+Predicted Motif 3: ACTGACCCTTTGAAT	MATCH
+
+Test 37
+Implanted Motif: ACGACAACACCTAAC
+Predicted Motif 1: TACGACAACACCTAA
+Predicted Motif 2: TACGACAACACCTAA
+Predicted Motif 3: TACGACAACACCTAA
+
+Test 38
+Implanted Motif: CCAAAAATCTCCGAT
+Predicted Motif 1: CCAAAAATCTCCGAT	MATCH
+Predicted Motif 2: CCAAAAATCTCCGAT	MATCH
+Predicted Motif 3: CCAAAAATCTCCGAT	MATCH
+
+Test 39
+Implanted Motif: AGTGGACGTTCGATA
+Predicted Motif 1: AGTGGACGTTCGATA	MATCH
+Predicted Motif 2: AGTGGACGTTCGATA	MATCH
+Predicted Motif 3: AGTGGACGTTCGATA	MATCH
+
+Test 40
+Implanted Motif: TACATTACCAGTCGA
+Predicted Motif 1: TACATTACCAGTCGA	MATCH
+Predicted Motif 2: TACATTACCAGTCGA	MATCH
+Predicted Motif 3: TACATTACCAGTCGA	MATCH
+
+Test 41
+Implanted Motif: ATTCGGACTCAGTGC
+Predicted Motif 1: ATTCGGACTCAGTGC	MATCH
+Predicted Motif 2: ATTCGGACTCAGTGC	MATCH
+Predicted Motif 3: ATTCGGACTCAGTGC	MATCH
+
+Test 42
+Implanted Motif: TTTGAACTGGAATGG
+Predicted Motif 1: no motifs found :(
+
+Test 43
+Implanted Motif: GACAGTCTTTTTGAA
+Predicted Motif 1: GACAGTCTTTTTGAA	MATCH
+Predicted Motif 2: GACAGTCTTTTTGAA	MATCH
+Predicted Motif 3: GACAGTCTTTTTGAA	MATCH
+
+Test 44
+Implanted Motif: CCAGAGTCTTGACCC
+Predicted Motif 1: no motifs found :(
+
+Test 45
+Implanted Motif: ATCAGCGGCATTGCA
+Predicted Motif 1: ATCAGCGGCATTGCA	MATCH
+Predicted Motif 2: ATCAGCGGCATTGCA	MATCH
+Predicted Motif 3: ATCAGCGGCATTGCA	MATCH
+
+Test 46
+Implanted Motif: GTGATGATCCTTCGT
+Predicted Motif 1: GTGATGATCCTTCGT	MATCH
+Predicted Motif 2: GTGATGATCCTTCGT	MATCH
+Predicted Motif 3: GTGATGATCCTTCGT	MATCH
+
+Test 47
+Implanted Motif: CGACTGGCCACCGGG
+Predicted Motif 1: CGACTGGCCACCGGG	MATCH
+Predicted Motif 2: CGACTGGCCACCGGG	MATCH
+Predicted Motif 3: CGACTGGCCACCGGG	MATCH
+
+Test 48
+Implanted Motif: AAAACGATCGTGAAT
+Predicted Motif 1: AAAACGATCGTGAAT	MATCH
+Predicted Motif 2: AAAACGATCGTGAAT	MATCH
+Predicted Motif 3: AAAACGATCGTGAAT	MATCH
+
+Test 49
+Implanted Motif: TGATAGAGGCCTGAG
+Predicted Motif 1: TGATAGAGGCCTGAG	MATCH
+Predicted Motif 2: TGATAGAGGCCTGAG	MATCH
+Predicted Motif 3: TGATAGAGGCCTGAG	MATCH
+
+Test 50
+Implanted Motif: TTTTTGTTCGTCACG
+Predicted Motif 1: TTTTTGTTCGTCACG	MATCH
+Predicted Motif 2: TTTTTGTTCGTCACG	MATCH
+Predicted Motif 3: TTTTTGTTCGTCACG	MATCH
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@c020n04>
+Subject: Job 143388: <PyTreeMotif> in cluster <Hazel> Done
+
+Job <PyTreeMotif> was submitted from host <login04> by user <lrwilli7> in cluster <Hazel> at Sat Apr 20 16:56:28 2024
+Job was executed on host(s) <c020n04>, in queue <serial>, as user <lrwilli7> in cluster <Hazel> at Sat Apr 20 16:56:29 2024
+</home/lrwilli7> was used as the home directory.
+</share/csc522s24/lrwilli7/PyTreeMotif/hpc_batch_scripts> was used as the working directory.
+Started at Sat Apr 20 16:56:29 2024
+Terminated at Sat Apr 20 20:41:14 2024
+Results reported at Sat Apr 20 20:41:14 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -n 1
+#BSUB -W 24:00
+#BSUB -J PyTreeMotif
+#BSUB -o outputs/stdout.%J
+#BSUB -e outputs/stderr.%J
+
+source ~/.bashrc
+conda activate /usr/local/usrapps/csc522s24/lrwilli7/env_synth_2
+python ../15_4_test.py
+conda deactivate
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   13462.34 sec.
+    Max Memory :                                 1 GB
+    Average Memory :                             0.78 GB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                6
+    Run time :                                   13489 sec.
+    Turnaround time :                            13486 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <outputs/stderr.143388> for stderr output of this job.
+

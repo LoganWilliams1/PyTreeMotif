@@ -10,7 +10,7 @@
 # 
 # Dependencies, can't live with em, can't live without em
 
-# In[ ]:
+# In[34]:
 
 
 import os
@@ -20,6 +20,8 @@ from collections import deque
 import random
 from tqdm import tqdm
 import re
+import pandas as pd
+import numpy as np
 
 
 #  # CLASSES 
@@ -34,7 +36,7 @@ import re
 #  
 # * records sequence, position, and the input sequence in which it was found <p></p>
 
-# In[ ]:
+# In[5]:
 
 
 class Sequence_Node:
@@ -49,7 +51,7 @@ class Sequence_Node:
 # * a set of Sequence_Nodes from one input sequence that are similar to a reference pair
 # 
 
-# In[ ]:
+# In[6]:
 
 
 class Sequence_Node_Set:
@@ -75,7 +77,7 @@ class Sequence_Node_Set:
 # 
 # * after tree construction, contains a list of trees built from this reference pair <p></p>
 
-# In[ ]:
+# In[7]:
 
 
 class Reference_Pair:
@@ -102,7 +104,7 @@ class Reference_Pair:
 # * contains lmer sequence, position, input sequence origin, depth, children, and parent <p></p>
 # * child nodes can be added and removed <p></p>
 
-# In[ ]:
+# In[8]:
 
 
 class Tree_Node:
@@ -137,7 +139,7 @@ class Tree_Node:
 # * each level of the tree represents nodes from each input sequence (besides the ref seqs) <p></p>
 # * leaves are stored for to be easily checked during branch pruning <p></p>
 
-# In[ ]:
+# In[9]:
 
 
 class Tree:
@@ -164,7 +166,7 @@ class Tree:
 # * for dedicated testing inputs where there is deliberately one motif per input sequence, merging may pick up random instances only similar by chance <p></p>
 # * when number of occurrences of motif per input is unknown, this may help detect multiple motif instances in the same input sequence, but other modifications to the algorithm are required in that scenario <p></p>
 
-# In[ ]:
+# In[10]:
 
 
 class Clique:
@@ -201,7 +203,7 @@ class Clique:
 # * reads a text file of one input sequence per line into a python list of input sequences
 # 
 
-# In[ ]:
+# In[11]:
 
 
 def read_file_to_list(filename):
@@ -224,7 +226,7 @@ def read_file_to_list(filename):
 # * measures hamming distance, the number of single character differences, between two strings
 # 
 
-# In[ ]:
+# In[12]:
 
 
 def hamming_distance(str1, str2):
@@ -241,7 +243,7 @@ def hamming_distance(str1, str2):
 # * traversal ends after finishing second to lowest level <p></p>
 # * all nodes left in the queue are the leaves of branches where every node in the branch all the way to the root is at most 2d from the new node <p></p>
 
-# In[ ]:
+# In[13]:
 
 
 def extendable(node, tree, ith_seq, _2d):
@@ -267,7 +269,7 @@ def extendable(node, tree, ith_seq, _2d):
 # 
 # * blah blah
 
-# In[ ]:
+# In[14]:
 
 
 def prune_branches(tree):
@@ -290,7 +292,7 @@ def prune_branches(tree):
 # 
 # * blah blah
 
-# In[ ]:
+# In[15]:
 
 
 def check_tree(tree):
@@ -307,7 +309,7 @@ def check_tree(tree):
 # 
 # * blah blah
 
-# In[ ]:
+# In[16]:
 
 
 def find_paths(node, path, paths):
@@ -331,7 +333,7 @@ def find_paths(node, path, paths):
 # 
 # * UNDER CONSTRUCTION
 
-# In[ ]:
+# In[17]:
 
 
 # def merge(new_cliques, _2d):
@@ -363,7 +365,7 @@ def find_paths(node, path, paths):
 # 
 # * blah blah
 
-# In[ ]:
+# In[18]:
 
 
 def score_motifs(motifs, motif_length):
@@ -418,7 +420,7 @@ def score_motifs(motifs, motif_length):
 # 
 # * blah blah
 
-# In[ ]:
+# In[19]:
 
 
 def consensus_grouping(motifs):
@@ -453,7 +455,7 @@ def consensus_grouping(motifs):
 # 
 # 
 
-# In[ ]:
+# In[20]:
 
 
 def select_nodes(sequence_list, l, _2d, show_progress):
@@ -502,13 +504,13 @@ def select_nodes(sequence_list, l, _2d, show_progress):
 
 # # STEP 2: TREE CONSTRUCTION #
 
-# In[ ]:
+# In[21]:
 
 
 def construct_trees(reference_pair_list, _2d, show_progress):
     
     num_seq = len(reference_pair_list[0].node_sets) + 2
-    tree_count = 0
+    # tree_count = 0
     cliques = []
     for pair in (tqdm(reference_pair_list, desc='Building trees from reference pairs', position=0, leave=True, file=sys.stdout) if show_progress else reference_pair_list):
         node_sets = pair.node_sets
@@ -535,8 +537,8 @@ def construct_trees(reference_pair_list, _2d, show_progress):
                 prune_branches(tree)
             if tree and check_tree(tree):    
                 pair.tree_list.append(tree)
-                tree.id = tree_count
-                tree_count += 1
+                # tree.id = tree_count
+                # tree_count += 1
                 
                 new_cliques = find_paths(tree.root, [], [])
 
@@ -559,7 +561,7 @@ def construct_trees(reference_pair_list, _2d, show_progress):
 # 
 # ### Define the full algorithm as the function find_motif() ###
 
-# In[ ]:
+# In[22]:
 
 
 def find_motif(DNA, motif_length, d=-1, print_output=True, show_progress=True, output_consensus_groups=False):
@@ -579,12 +581,17 @@ def find_motif(DNA, motif_length, d=-1, print_output=True, show_progress=True, o
                 continue
             motifs = construct_trees(reference_pairs, _2d, show_progress)
             i += 1
+        if not reference_pairs:
+            return ["no reference pairs found :("]
     else:
         _2d = d * 2
         reference_pairs = select_nodes(DNA, motif_length, _2d, show_progress)
+        if not reference_pairs:
+            return ["no reference pairs found :("]
         motifs = construct_trees(reference_pairs, _2d, show_progress)
     
-    if not reference_pairs or not motifs:
+
+    if not motifs:
         return ["no motifs found :("]
     
     score_motifs(motifs, motif_length)
@@ -619,7 +626,7 @@ def find_motif(DNA, motif_length, d=-1, print_output=True, show_progress=True, o
                 print(dash_line)
 
                 
-
+        print(dash_line)
         print("Total Cliques: " + str(len(motifs)))
         print("Total Consensus Motifs: " + str(len(consensus_groups)))
         if d == -1:
@@ -641,7 +648,28 @@ def find_motif(DNA, motif_length, d=-1, print_output=True, show_progress=True, o
     return [motif.consensus for motif in best_motifs]
 
 
-# In[ ]:
+
+# # 15,4 BENCHMARKING #
+# ### Test the algorithm with the original subtle motif challenge proposed by Pevzner ###
+# 
+# First define the function to generate a single dataset.
+# 
+# It will take a sequence length argument.
+# 
+# First, a 15mer motif is randomly generated.
+# 
+# For each of 20 sequences:
+# 
+# 1. The sequence is randomly generated at the given length
+#     
+# 2. The motif is mutated 4 times at random positions with random bases
+#     
+# 3. The mutated motif is implanted into the sequence at a random position
+# 
+# The dataset is now made up of 20 random sequences of the given length, each with a (15,4) implanted motif
+# 
+
+# In[23]:
 
 
 def generate_15_4_dataset(seq_len, l, d):
@@ -678,19 +706,178 @@ def generate_15_4_dataset(seq_len, l, d):
     #     print(im[0], im[1])
         
     return dataset, motif, implanted_motifs
+    
 
 
-# ### Test with 50 15,4 datasets ###
+# # Evaluation Method
 # 
-# To replicate Sun et al's testing scheme as closely as possible, test the algorithm with 50 different datsets.
+# ### Replicate the evaluation scheme of Sun et al
 # 
-# First try a fast one with a sequence length of 100
+# Test 50 datasets of 20 600-bp long sequences for each of four (l,d) motifs:
 # 
+# * 12,3
+# * 13,3
+# * 14,4
+# * 15,4
+# 
+# note: Sun et al's evaluation included additional l,d motifs that we do not include in our tests.  
+# 
+# The results are evaluated with nucleotide based metrics introduced by Pevzner and Sze (2000)  
+# 
+# The metrics, nucleotide performance coefficient (nPC) and nucleotide sensitivity (nSn) are built from a nucleotide level confusion matrix, where:  
+# 
+# * True Positives, TP is the number of nucleotide positions in both known sites and predicted sites
+# * False Negatives, FN is the number of nucleotide positions in known sites but not in predicted sites
+# * False Positive, FP is the number of nucleotide positions not in known sites but in predicted sites 
+# * True Negative, TN is the number of nucleotide positions in neither known sites nor predicted sites
+# 
+# 
+# &emsp;&emsp;nPC = TP/(TP+FN+FP)  
+# &emsp;&emsp;nSn = TP/(TP+FN)  <p></p>
+# 
+# The best motif of the top 3 ranked motifs was used to obtain the best metric. Note that 0, 1, or 2 motifs is also a possible result.
+# 
+# These metrics were averaged over all 50 tests. Sun et al only used nSn in a comparison with other algorithms, so the only result available is for 15,4 motifs.
+# 
+# The following results were presented by Sun et al: <p></p>
+# 
+# | l,d  | nPC         | nSn         |
+# |------|-------------|-------------|
+# | 12,3 | 0.82 ± 0.07 | -           |
+# | 13,3 | 0.94 ± 0.05 | -           |
+# | 14,4 | 0.80 ± 0.19 | -           |
+# | 15,4 | 0.95 ± 0.05 | 1.00 ± 0.01 |
+# 
+# Due to time constraints for submitting the project we did not run this evaluation in the notebook. 
+# 
+# Separate python scripts were generated to run each test in unison on NCSU's Hazel cluster, and metrics were calculated by hand based on the output shown in the cell above. <p></p>
+# 
+# For example, if one of the 50 tests had this result: 
+# 
+#     Test 3  
+#     Implanted Motif: GAATCAGGGTGAA  
+#     Predicted Motif 1: GAATCAGGGTGAA    MATCH  
+#     Predicted Motif 2: GAATCAGGGTGAA    MATCH  
+#     Predicted Motif 3: GAATCAGGGTGAA    MATCH  
+# 
+# or this result
+# 
+#     Test 7  
+#     Implanted Motif: GTTGGCAGTCGGA  
+#     Predicted Motif 1: GTTGGCAGTCGGA    MATCH  
+#     Predicted Motif 2: TTGGCAGTCGGAG  
+# 
+# then nPC = 1. If the motif was correctly identified, there are no FNs or FPs. <p></p>
+# 
+# However, for this result:
+# 
+#     Test 50  
+#     Implanted Motif: TCCATAGGAGATT  
+#     Predicted Motif 1: CCATAGCAGATTT  
+# 
+# the motif was not precisely identified, resulting in nucleotide FNs and FPs.
+#   
+# In this case, the implanted motif and predicted motif are misaligned by 1 base, as well as another substitution in the middle of the motif
+# 
+# There is a FN before the beginning of the predicted motif, and a FP at the last base. 
+# 
+#  TCCATAGGAGATT  
+#  <span style="color: red;">T</span>CCATAG<span style="color: orange;">C</span>AGATT<span style="color: orange;">T</span>
+# 
+# Therefore, nPC = 12/(12+1+2) = 0.8 <p></p>
+# 
+# Finally, for this result:
+# 
+#     Test 19  
+#     Implanted Motif: ATTGTAATTCACT  
+#     Predicted Motif 1: no motifs found :(  
+# 
+# nPC = 0.  <p></p><p></p>
+# 
+# For results with found motifs that aren't a perfect match, use the Needleman-Wunsch global alignment algorithm to align each predicted motif to the implanted motif. Then, we can count true positives, false positives, and false negatives - all of the terms needed to calculate nPC. 
+# 
+# Finally, get the mean and standard deviation of all 50 nPCs.
 # 
 # 
 
-# In[ ]:
+# In[38]:
 
+
+def needleman_wunsch(seq1, seq2, match_score=1, mismatch_score=-1, gap_score=-1):
+    # Initialize the matrix
+    m, n = len(seq1), len(seq2)
+    score_matrix = [[0 for _ in range(n+1)] for _ in range(m+1)]
+
+    # Initialize first row and column
+    for i in range(m+1):
+        score_matrix[i][0] = i * gap_score
+    for j in range(n+1):
+        score_matrix[0][j] = j * gap_score
+
+    # Fill the matrix
+    for i in range(1, m+1):
+        for j in range(1, n+1):
+            if seq1[i-1] == seq2[j-1]:
+                match = score_matrix[i-1][j-1] + match_score
+            else:
+                match = score_matrix[i-1][j-1] + mismatch_score
+            delete = score_matrix[i-1][j] + gap_score
+            insert = score_matrix[i][j-1] + gap_score
+            score_matrix[i][j] = max(match, delete, insert)
+            
+    # for i in range(m+1):
+    #     print(score_matrix[i])
+
+    # Traceback to find alignment
+    # we did not store traceback pointers
+    align1, align2 = '', ''
+    i, j = m, n
+    while i > 0 and j > 0:
+        score_current = score_matrix[i][j]
+        score_diagonal = score_matrix[i-1][j-1]
+        score_up = score_matrix[i][j-1]
+        score_left = score_matrix[i-1][j]
+
+        if score_current == score_diagonal + (match_score if seq1[i-1] == seq2[j-1] else mismatch_score):
+            align1 += seq1[i-1]
+            align2 += seq2[j-1]
+            i -= 1
+            j -= 1
+        elif score_current == score_left + gap_score:
+            align1 += seq1[i-1]
+            align2 += '-'
+            i -= 1
+        else: # score_current == score_up + gap_score
+            align1 += '-'
+            align2 += seq2[j-1]
+            j -= 1
+
+    # Finish tracing up to the top left cell
+    while i > 0:
+        align1 += seq1[i-1]
+        align2 += '-'
+        i -= 1
+    while j > 0:
+        align1 += '-'
+        align2 += seq2[j-1]
+        j -= 1
+
+    # The sequences are aligned from the end to the start so we reverse them
+    align1 = align1[::-1]
+    align2 = align2[::-1]
+    
+
+    return align1, align2
+
+
+# Now use it to calculate nPC for all 50 tests, and get the mean and standard deviation. 
+# 
+# The entire evaluation process for one l,d condition from start to finish is shown below. Run a fast example again with short sequences.
+
+# In[35]:
+
+
+# Run the algorithm
 
 implanted_motif_list = []
 found_motif_list = []
@@ -700,21 +887,56 @@ for i in tqdm(range(50), desc='Testing datasets', position=0, leave=True):
     
     implanted_motif_list.append(implanted_motif)
     found_motif_list.append(found_motif)
-    
 
 
-# In[ ]:
+# Calculate and print results
 
-print("13,3 Implanted Motif Tests\n")
+print("15,4 Implanted Motif Tests\n")
+npc_list = []
 for i in range(50):
     print("Test " + str(i + 1))
     print("Implanted Motif: " + implanted_motif_list[i])
+    
+    
+    best_npc = 0
+    
+        
     for j in range(len(found_motif_list[i])):
+        curr_npc = 0
         match = ""
+        
         if implanted_motif_list[i] == found_motif_list[i][j]:
             match = "\tMATCH"
+            best_npc = 1
+        elif found_motif_list[i][0][0] != 'n':
+            # alignment
+            aligned_IM, aligned_PM = needleman_wunsch(implanted_motif_list[i], found_motif_list[i][j])
+            TPs, FPs, FNs = 0, 0, 0
+            for k in range(len(aligned_PM)):
+                if aligned_PM[k] == aligned_IM[k]:
+                    TPs += 1
+                elif aligned_PM[k] == '_':
+                    FNs += 1
+                else:
+                    FPs += 1
+            
+            curr_npc = TPs / (TPs + FPs + FNs)
+            best_npc = max(best_npc, curr_npc)
+              
         print("Predicted Motif " + str(j + 1) + ": " + found_motif_list[i][j] + match)
+    print("Best nPC: " + str(best_npc))
+    npc_list.append(best_npc)
     print()
+    
+npc_numpy = np.array(npc_list)
+npc_mean = np.mean(npc_numpy, axis=0)
+npc_std = np.std(npc_numpy, axis=0)
+
+print('\n' + ('-' * 80) + '\n')
+print("Mean nPC: " + str(npc_mean))
+print("Std nPC: " + str(npc_std))
+
+    
 
 
 
